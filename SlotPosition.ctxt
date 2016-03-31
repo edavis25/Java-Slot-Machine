@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=locationArg
+comment0.target=SlotPosition(int)
+comment1.params=
+comment1.target=SlotPosition()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ SlotPosition\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=parameter
+comment3.target=void\ setAnimationFlag(boolean)
+comment4.params=
+comment4.target=boolean\ animationFinished()
+comment5.params=
+comment5.target=int\ getSlotPosition()
+comment6.params=
+comment6.target=void\ removeThis()
+comment7.params=
+comment7.target=void\ animateREDO()
+numComments=8
