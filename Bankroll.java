@@ -59,4 +59,9 @@ public class Bankroll extends Actor
     {
         bankroll = bankroll + x;
     }
+    
+    public int getBankroll()
+    {
+        return bankroll;
+    }
 }

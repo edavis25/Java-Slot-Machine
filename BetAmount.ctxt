@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.params=
+comment0.target=BetAmount()
+comment0.text=\r\n\ BetAmount()\ -\ Constructor.\ Set\ the\ new\ image\ size\ and\ initialize\ the\ counter\ to\ 0\ for\ the\ \r\n\ first\ value\ in\ the\ array.\ Call\ updateBet()\ to\ draw\ the\ string\ onto\ the\ screen.\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ Check\ to\ make\ sure\ the\ bet\ cannot\ exceed\ the\ bankroll\ with\ checkLegalBet\ method.\ Once\r\n\ confirmed\ as\ legal\ amount,\ update\ the\ bet\ image\ with\ updateBet\ method.\r\n
+comment2.params=
+comment2.target=void\ updateBet()
+comment2.text=\ \r\n\ updateBet\ -\ Creates\ the\ image\ displayed\ on\ the\ screen.\ Update\ is\ called\ each\ execution\r\n\ cycle\ to\ check\ for\ changes.\ The\ old\ image\ needs\ cleared\ to\ prevent\ stacking,\ and\ a\ new\ \r\n\ image\ is\ then\ created\ with\ any\ increased/decreased\ bets.\r\n
+comment3.params=
+comment3.target=void\ checkLegalBet()
+comment3.text=\r\n\ checkLegalBet\ -\ Check\ to\ make\ sure\ the\ current\ bet\ is\ legal\ (ie\:\ not\ greater\ than\ current\ bankroll\r\n\ nor\ greater\ than\ the\ max\ allowed\ bet).\ While\ loop\ tests\ current\ bet\ against\ bankroll\ and\ forces\ \r\n\ decrease\ if\ bet\ is\ illegal.\ The\ if\ statement\ makes\ sure\ the\ array\ index\ never\ reaches\ -1.\r\n
+comment4.params=
+comment4.target=int\ getBetAmount()
+comment5.params=
+comment5.target=void\ increaseBet()
+comment5.text=\r\n\ increaseBet\ -\ Increases\ the\ current\ bet,\ duh.\ Make\ sure\ the\ increase\ in\ bet\ does\ not\ exceed\r\n\ the\ upper\ bound\ of\ the\ array\ nor\ the\ current\ bankroll.\r\n
+comment6.params=
+comment6.target=void\ decreaseBet()
+numComments=7

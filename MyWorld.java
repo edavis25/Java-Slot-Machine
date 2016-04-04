@@ -15,6 +15,11 @@ public class MyWorld extends World
     SlotPosition slotPosition2;
     SlotPosition slotPosition3;
     
+    BetAmount betAmount;
+    
+    BetChange increaseArrow;
+    BetChange decreaseArrow;
+    
     SpinButton spinButton;
     
     Bankroll bankroll;
@@ -46,6 +51,18 @@ public class MyWorld extends World
         bankroll = new Bankroll();
         addObject(bankroll, 500, 580);
         
+        // Bet Amount Label
+        betAmount = new BetAmount();
+        addObject(betAmount, 210, 583);
+        
+       
+        // Create and add bet change arrows
+        increaseArrow = new BetChange("increase");
+        addObject(increaseArrow, 70, 560);
+        decreaseArrow = new BetChange("decrease");
+        addObject(decreaseArrow, 110, 560);
+        
+        
         running = false;
         
     }
@@ -53,13 +70,15 @@ public class MyWorld extends World
     
     public void act()
     {
+        checkBetChange();
+        
         if (Greenfoot.mousePressed(spinButton) && running == false)
         {
             spinButton.setImage("images/button-red.png");
             
             addItems();
             
-            bankroll.adjustBankroll(-5);
+            bankroll.adjustBankroll(-betAmount.getBetAmount());
             
             GreenfootSound slotSpinning = new GreenfootSound("sounds/slotSpinning.wav");
             slotSpinning.setVolume(100);
@@ -72,13 +91,16 @@ public class MyWorld extends World
             running = true;
         }
         
-        if (slotPosition1.animationFinished() && running == true)
+        if (slotPosition3.animationFinished() && running == true)
         {
                         
             checkWin();
             spinButton.setImage("images/button-green.png");
             running = false;
+            
+            checkBust();
         }
+        
         
     }
     
@@ -94,13 +116,15 @@ public class MyWorld extends World
            //Check for 3 of a kind
            if ( slotPosition1.getSlotPosition() == slotPosition2.getSlotPosition() && slotPosition1.getSlotPosition() == slotPosition3.getSlotPosition() )
            {
-                bankroll.adjustBankroll(25);
-                chaChing.play();
+               // Win bet amount * 3
+               bankroll.adjustBankroll(betAmount.getBetAmount() * 3);
+               chaChing.play();
            }
            else
            {
-                bankroll.adjustBankroll(10);
-                chaChing.play();
+               // Win money back
+               bankroll.adjustBankroll(betAmount.getBetAmount());
+               chaChing.play();
            }
        }
     }
@@ -123,5 +147,24 @@ public class MyWorld extends World
         
     }
     
+    private void checkBetChange()
+    {
+        if (Greenfoot.mouseClicked(increaseArrow))
+        {
+            betAmount.increaseBet();
+        }
+        else if (Greenfoot.mouseClicked(decreaseArrow))
+        {
+            betAmount.decreaseBet();
+        }
+    }
     
+    private void checkBust()
+    {
+        if (bankroll.getBankroll() <= 0)
+        {
+            Greenfoot.stop();
+        }
+    }
+
 }

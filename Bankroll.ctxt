@@ -8,4 +8,6 @@ comment2.params=
 comment2.target=void\ updateBankroll()
 comment3.params=x
 comment3.target=void\ adjustBankroll(int)
-numComments=4
+comment4.params=
+comment4.target=int\ getBankroll()
+numComments=5
