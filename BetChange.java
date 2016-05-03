@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class BetChange here.
+ * Does nothing other than add the 2 arrow buttons for increasing/decreasing bet amount. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Eric Davis
+ * @version 1.0
  */
 public class BetChange extends Actor
 {

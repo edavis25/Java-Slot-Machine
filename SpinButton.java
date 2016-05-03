@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class SpinButton here.
+ * SpinButton is boring, has 2 states: green = ready and red = occupied. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Eric Davis
+ * @version 1.0
  */
 public class SpinButton extends Actor
 {
