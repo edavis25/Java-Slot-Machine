@@ -1,10 +1,12 @@
 import greenfoot.*;
 
 /**
- * Write a description of class MyWorld here.
+ * Most of the execution happens here. Create the background and all the objects to be used. Handles
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ *
+ * 
+ * @author Eric Davis
+ * @version 1.0
  */
 public class MyWorld extends World
 {
@@ -67,7 +69,12 @@ public class MyWorld extends World
         
     }
     
-    
+    /**
+     * act() - Main execution. Begin by looking for any changes in bet. If the user presses the green start button,
+     *         the slot will start running with current bet. Adjust the bankroll appropriately and set "running" flag
+     *         to true to block the user from clicking other buttons while slot is running. Wait for the last slot to
+     *         finish animating before checking for wins and busts.
+     */
     public void act()
     {
         checkBetChange();
@@ -82,15 +89,13 @@ public class MyWorld extends World
             
             GreenfootSound slotSpinning = new GreenfootSound("sounds/slotSpinning.wav");
             slotSpinning.setVolume(100);
-            
-            //if (slotSpinning.isPlaying() == false)
-            //{   
-                slotSpinning.play();
-            //}
+           
+            slotSpinning.play();
             
             running = true;
         }
         
+        // Once the last slot icon is finished animating, check win and set button active for next pull.
         if (slotPosition3.animationFinished() && running == true)
         {
                         
@@ -104,10 +109,14 @@ public class MyWorld extends World
         
     }
     
+    /**
+     * checkWin() - Check the different slot positions looking for a win after animations are finished.
+     *              -> 2 of any kind wins money back. 
+     *              -> 3 of any kind wins 3 times bet amount.
+     */
     private void checkWin()
     {
        GreenfootSound chaChing = new GreenfootSound("sounds/chaChing.wav");
-        
        chaChing.setVolume(100);
        
        // Check 2 of a kind
@@ -129,7 +138,10 @@ public class MyWorld extends World
        }
     }
     
-    
+    /**
+     * addItems() -  Add different slot machine fruit icons. Remove old ones before adding 
+     *               the new ones to prevent items from stacking stacking.
+     */
     private void addItems()
     {
         removeObject(slotPosition1);
@@ -140,6 +152,7 @@ public class MyWorld extends World
         slotPosition2 = new SlotPosition(2);
         slotPosition3 = new SlotPosition(3);
         
+        // Number arguments = X,Y coordinates
         addObject(slotPosition1, 155, 385);
         addObject(slotPosition2, 300, 385);
         addObject(slotPosition3, 445, 385);
@@ -147,18 +160,25 @@ public class MyWorld extends World
         
     }
     
+    /**
+     * checkBetChange() - Check for increase or decrease in bet from mouse click on arrows. Make sure
+     *                    the animation is not currently running when allowing bet changing.
+     */
     private void checkBetChange()
     {
-        if (Greenfoot.mouseClicked(increaseArrow))
+        if (Greenfoot.mouseClicked(increaseArrow) && running == false)
         {
             betAmount.increaseBet();
         }
-        else if (Greenfoot.mouseClicked(decreaseArrow))
+        else if (Greenfoot.mouseClicked(decreaseArrow) && running == false)
         {
             betAmount.decreaseBet();
         }
     }
     
+    /**
+     * checkBust() - Check for bankroll bust and if found, stop program execution.
+     */
     private void checkBust()
     {
         if (bankroll.getBankroll() <= 0)

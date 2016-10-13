@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.params=locationArg
 comment0.target=SlotPosition(int)
+comment0.text=\r\n\ Main\ constructor-\ locationArg\ should\ be\ only\ 1,\ 2,\ or\ 3.\ This\ relates\ to\ the\ position\ on\ the\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slot\ machine.\ 1\ \=\ left,\ 2\ \=\ center,\ 3\ \=\ right.\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ This\ value\ is\ used\ to\ time\ up\ the\ animation\ with\ the\ sound\ bite\ by\ making\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ positions\ stop\ spinning\ one\ at\ a\ time\ starting\ with\ the\ left\ one.\r\n
 comment1.params=
 comment1.target=SlotPosition()
+comment1.text=\r\n\ SlotPosition\ constructor\ for\ beginning\ state\ of\ the\ positions\ upon\ very\ first\ startup.\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ SlotPosition\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.text=\r\n\ Act\ -\ If\ the\ animation\ flag\ is\ false,\ the\ slot\ position\ should\ be\ spinning.\ Otherwise\ display\r\n\ \ \ \ \ \ \ a\ static\ image\ determined\ by\ the\ current\ position.\r\n
 comment3.params=parameter
 comment3.target=void\ setAnimationFlag(boolean)
 comment4.params=
@@ -15,5 +17,6 @@ comment5.target=int\ getSlotPosition()
 comment6.params=
 comment6.target=void\ removeThis()
 comment7.params=
-comment7.target=void\ animateREDO()
+comment7.target=void\ animate()
+comment7.text=\r\n\ animat()\ -\ Animates\ the\ slot\ counter\ by\ flipping\ through\ each\ icon\ in\ the\ array.\ The\ imagecounter\r\n\ \ \ \ \ \ \ \ \ \ \ \ increments\ each\ execution\ and\ is\ used\ to\ determine\ when\ to\ switch\ to\ the\ next\ fruit\r\n\ \ \ \ \ \ \ \ \ \ \ \ image\ in\ the\ array\ (every\ 5\ milliseconds).\ The\ animation\ index\ is\ used\ to\ cycle\ thru\r\n\ \ \ \ \ \ \ \ \ \ \ \ the\ different\ images,\ and\ once\ reaching\ last\ image\ in\ array,\ reset\ to\ 0\ and\ start\ over.\r\n
 numComments=8

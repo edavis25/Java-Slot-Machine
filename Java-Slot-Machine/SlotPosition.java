@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class SlotPosition here.
+ * SlotPosition class holds info and action methods for the 3 spinning slot icons. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Eric Davis 
+ * @version 1.0
  */
 public class SlotPosition extends Actor
 {
@@ -21,10 +21,12 @@ public class SlotPosition extends Actor
     
     private int location;
     
-    // Main constructor. locationArg should be only 1, 2, or 3. This relates to the
-    // position on the slot machine. 1 = left, 2 = center, 3 = right. This value
-    // is used to time up the animation with the sound bite by making the positions
-    // stop spinning one at a time starting with the left one.
+    /**
+     * Main constructor- locationArg should be only 1, 2, or 3. This relates to the position on the
+     *                   slot machine. 1 = left, 2 = center, 3 = right. 
+     *                   This value is used to time up the animation with the sound bite by making 
+     *                   the positions stop spinning one at a time starting with the left one.
+     */
     public SlotPosition(int locationArg)
     {
         images[0] = new GreenfootImage("images/grape.png");
@@ -47,26 +49,27 @@ public class SlotPosition extends Actor
         animationFinished = false;
     }
     
+    /**
+     * SlotPosition constructor for beginning state of the positions upon very first startup.
+     */
     public SlotPosition()
     {
         images[0] = new GreenfootImage("images/grape.png");
                 
         setImage(images[0]); 
-        //slotPosition = Greenfoot.getRandomNumber(3);
    
         animationFinished = true;
     }
     
     /**
-     * Act - do whatever the SlotPosition wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Act - If the animation flag is false, the slot position should be spinning. Otherwise display
+     *       a static image determined by the current position.
      */
     public void act() 
     {
         if (animationFinished == false)
         {
-            animateREDO();
-          
+            animate();
         }
         else
         {
@@ -98,7 +101,13 @@ public class SlotPosition extends Actor
         world.removeObject(this);
     }
     
-    public void animateREDO()
+    /**
+     * animat() - Animates the slot counter by flipping through each icon in the array. The imagecounter
+     *            increments each execution and is used to determine when to switch to the next fruit
+     *            image in the array (every 5 milliseconds). The animation index is used to cycle thru
+     *            the different images, and once reaching last image in array, reset to 0 and start over.
+     */
+    public void animate()
     {
         MyWorld world = (MyWorld)getWorld();
         
@@ -107,7 +116,7 @@ public class SlotPosition extends Actor
             setImage(images[animationIndex]);
             animationIndex++;
             
-            if (animationIndex > 7)
+            if (animationIndex >= images.length)
             {
                 animationIndex = 0;
             }
